@@ -17,7 +17,7 @@
             android:id="@+id/name_field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Enter your name"
+            android:hint="@string/name"
             android:inputType="textCapWords" />
 
 
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Topping"
+            android:text="@string/toppings"
             android:textAllCaps="true" />
 
 
@@ -34,8 +34,9 @@
             android:id="@+id/whipped_cream_check_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="24dp"
             android:paddingLeft="24dp"
-            android:text="Whipped cream"
+            android:text="@string/whipped_cream"
             android:textSize="16sp" />
 
 
@@ -44,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
-            android:text="Chocolate"
+            android:text="@string/chocolate"
             android:textSize="16sp" />
 
 
@@ -55,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:text="Quantity"
+            android:text="@string/quantity"
             android:textAllCaps="true" />
 
         <LinearLayout
@@ -75,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:text="0"
+                android:text="@string/initial_quantity_value"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -95,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:onClick="submitOrder"
-            android:text="Order" />
+            android:text="@string/order" />
 
 
 

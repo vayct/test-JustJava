@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.jetsu.justjava.R.string.chocolate;
+
 public class MainActivity extends AppCompatActivity {
 
     private int quantity = 1;
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order for " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_summary_email_subject, name));
         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
         if(intent.resolveActivity(getPackageManager()) != null)
             startActivity(intent);
@@ -105,12 +107,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private String createOrderSummary(int price, boolean cream, boolean chocolate, String name){
-        String priceMessage = "Name: " + name;
-        priceMessage = priceMessage + "\nAdd whipped cream? " + cream;
-        priceMessage = priceMessage + "\nAdd chocolate? " + chocolate;
-        priceMessage = priceMessage + "\nQuantity: " + quantity;
-        priceMessage = priceMessage + "\nTotal: $" + quantity*price;
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, String name){
+
+        int thisPrice = quantity*price;
+
+        String priceMessage = getString(R.string.order_summary_name, name);
+        priceMessage = priceMessage + "\n" + getString(R.string.order_summary_whipped_cream, addWhippedCream);
+        priceMessage = priceMessage + "\n" + getString(R.string.order_summary_chocolate, addChocolate);
+        priceMessage = priceMessage + "\n" + getString(R.string.order_summary_quantity, quantity);
+        priceMessage = priceMessage + "\n" + getString(R.string.order_summary_price, thisPrice);
+        priceMessage = priceMessage + "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
 
