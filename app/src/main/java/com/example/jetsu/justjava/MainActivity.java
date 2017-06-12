@@ -2,15 +2,21 @@ package com.example.jetsu.justjava;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.example.jetsu.justjava.R.string.chocolate;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +28,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String test1= sharedPrefs.getString(
+                getString(R.string.settings_min_quantity_key),
+                getString(R.string.settings_min_quantity_default));
+        quantity = Integer.parseInt(test1);
+        display(quantity);
+
+
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_check_box);
+
+
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_check_box);
+
+
+        String test2= sharedPrefs.getString(
+                getString(R.string.settings_toppings_keys),
+                getString(R.string.settings_toppings_default));
+
+        if(test2.compareTo("c") == 0)
+            chocolateCheckBox.setChecked(true);
+        else
+            whippedCreamCheckBox.setChecked(true);
     }
 
     public void submitOrder(View view) {
@@ -56,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
 
+
+
  /**
         //for checking out example intent
 
@@ -76,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void display(int number) {
+
+
+
+
+
+
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText(Integer.toString(number));
     }
@@ -120,5 +157,24 @@ public class MainActivity extends AppCompatActivity {
         return priceMessage;
     }
 
+
+    @Override
+    //draw the menu on the screen
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    //go to the SettingsActivity
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

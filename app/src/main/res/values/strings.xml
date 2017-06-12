@@ -15,4 +15,28 @@
     <string name="order_summary_quantity">Quantity: <xliff:g id="quantity" example="0">%d</xliff:g></string>
     <string name="order_summary_price">Total: $ <xliff:g id="thisPrice" example="$10">%d</xliff:g></string>
     <string name="order_summary_email_subject">Just Java order for <xliff:g id="name" example="Amy">%s</xliff:g></string>
+
+
+
+    <!-- Strings For Minimum Magnitude Preference [CHAR LIMIT=30] -->
+    <string name="settings_min_quantity">Minimum quantity</string>
+    <string name="settings_min_quantity_key" translatable="false">quantity</string>
+    <string name="settings_min_quantity_default" translatable="false">1</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_toppings">Toppings</string>
+    <string name="settings_toppings_keys" translatable="false">toppings</string>
+    <string name="settings_toppings_default" translatable="false">@string/settings_toppings_chocolate_value</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_toppings_chocolate_label">Chocolate</string>
+    <string name="settings_toppings_chocolate_value" translatable="false">c</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_toppings_whipped_cream_label">Whipped Cream</string>
+    <string name="settings_toppings_whipped_cream_value" translatable="false">w</string>
+
+
+
+
 </resources>
